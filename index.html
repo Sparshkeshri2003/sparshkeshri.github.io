@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparsh Keshri | VLSI & Embedded Systems Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        'tech': {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        'circuit': {
+                            dark: '#0a0e1a',
+                            card: '#111827',
+                            accent: '#3b82f6',
+                            glow: '#06b6d4',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'gradient-x': {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0e1a;
+            color: #e2e8f0;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        .circuit-line {
+            position: relative;
+            overflow: hidden;
+        }
+        .circuit-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+            animation: slide 3s linear infinite;
+        }
+        @keyframes slide {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+        .tech-badge {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(6, 182, 212, 0.3);
+        }
+        .skill-bar {
+            background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0e1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-microchip text-white text-sm"></i>
+                    </div>
+                    <span class="font-display font-bold text-xl tracking-tight text-white">SK.</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">About</a>
+                    <a href="#skills" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Technical Skills</a>
+                    <a href="#experience" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Experience</a>
+                    <a href="#projects" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Projects</a>
+                    <a href="#contact" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Contact</a>
+                </div>
+                <a href="mailto:sparshkeshri2003@gmail.com" class="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all">
+                    Hire Me <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 mb-8 animate-float">
+                <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-xs font-medium text-slate-300">Available for Core ECE Roles</span>
+            </div>
+            
+            <h1 class="font-display text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                Sparsh <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 glow-text">Keshri</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-8 font-light">
+                VLSI Design & Embedded Systems Engineer specializing in <span class="text-cyan-400 font-medium">FPGA Architecture</span>, <span class="text-cyan-400 font-medium">Deep Learning Acceleration</span> & <span class="text-cyan-400 font-medium">Hardware Optimization</span>
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <span class="tech-badge px-4 py-2 rounded-full text-sm font-medium text-cyan-300 flex items-center gap-2">
+                    <i class="fas fa-microchip"></i> Zynq UltraScale+ FPGA
+                </span>
+                <span class="tech-badge px-4 py-2 rounded-full text-sm font-medium text-cyan-300 flex items-center gap-2">
+                    <i class="fas fa-brain"></i> Neural Network Acceleration
+                </span>
+                <span class="tech-badge px-4 py-2 rounded-full text-sm font-medium text-cyan-300 flex items-center gap-2">
+                    <i class="fas fa-satellite"></i> Space Systems (ISRO)
+                </span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-xl hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-1">
+                    View Projects
+                </a>
+                <a href="mailto:sparshkeshri2003@gmail.com" class="px-8 py-4 rounded-full border border-slate-600 text-slate-300 font-semibold hover:border-cyan-500 hover:text-cyan-400 transition-all">
+                    Download Resume
+                </a>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-1">7.5</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-wider">CGPA</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-1">4+</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-wider">Premier Internships</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-1">DRDO</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-wider">Sponsored Research</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white mb-1">ISRO</div>
+                    <div class="text-xs text-slate-500 uppercase tracking-wider">Space Tech Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-display text-3xl font-bold text-white mb-6">About Me</h2>
+                    <div class="circuit-line w-20 mb-6"></div>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        I am a driven <strong class="text-cyan-400">VLSI researcher</strong> and final-year ECE student at Central University of Jammu, focused on the intersection of <strong class="text-cyan-400">Deep Learning</strong> and custom silicon architecture.
+                    </p>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        My expertise lies in optimizing Neural Networks for edge deployment through model compression, structured pruning, and fixed-point arithmetic. I have proven experience architecting high-throughput accelerators on <strong class="text-cyan-400">Zynq UltraScale+ FPGAs</strong>, with specific focus on minimizing memory bottlenecks in real-time computer vision systems.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="glass-card p-4 rounded-xl">
+                            <i class="fas fa-graduation-cap text-cyan-400 text-xl mb-2"></i>
+                            <h3 class="font-semibold text-white">Education</h3>
+                            <p class="text-sm text-slate-400">BTech ECE, Central University of Jammu</p>
+                            <p class="text-xs text-cyan-500 mt-1">2022-2026 | CGPA: 7.5</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl">
+                            <i class="fas fa-award text-cyan-400 text-xl mb-2"></i>
+                            <h3 class="font-semibold text-white">Certifications</h3>
+                            <p class="text-sm text-slate-400">Enterprise AI, Data Science</p>
+                            <p class="text-xs text-cyan-500 mt-1">NCVPRIPG2024, IBM SkillsBuild</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur-2xl opacity-20"></div>
+                    <div class="relative glass-card rounded-2xl p-8 border border-slate-700">
+                        <h3 class="font-display text-xl font-bold text-white mb-6">Core Competencies</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-slate-300">RTL Design & Synthesis</span>
+                                    <span class="text-sm text-cyan-400">95%</span>
+                                </div>
+                                <div class="w-full bg-slate-700 rounded-full h-2">
+                                    <div class="skill-bar h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-slate-300">FPGA Architecture (Xilinx)</span>
+                                    <span class="text-sm text-cyan-400">90%</span>
+                                </div>
+                                <div class="w-full bg-slate-700 rounded-full h-2">
+                                    <div class="skill-bar h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-slate-300">Hardware Optimization</span>
+                                    <span class="text-sm text-cyan-400">85%</span>
+                                </div>
+                                <div class="w-full bg-slate-700 rounded-full h-2">
+                                    <div class="skill-bar h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-slate-300">Embedded Systems</span>
+                                    <span class="text-sm text-cyan-400">88%</span>
+                                </div>
+                                <div class="w-full bg-slate-700 rounded-full h-2">
+                                    <div class="skill-bar h-2 rounded-full" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Grid -->
+    <section id="skills" class="py-20 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl font-bold text-white mb-4">Technical Arsenal</h2>
+                <p class="text-slate-400">Specialized tools and technologies for silicon design</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Logic Design -->
+                <div class="glass-card rounded-xl p-6 hover:border-cyan-500/50 transition-all group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-microchip text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-3">Logic Design</h3>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> RTL Synthesis & Design</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Vitis HLS, Vivado</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> FSM Design & Verification</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Timing Closure</li>
+                    </ul>
+                </div>
+
+                <!-- SoC Architecture -->
+                <div class="glass-card rounded-xl p-6 hover:border-cyan-500/50 transition-all group">
+                    <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-project-diagram text-cyan-400 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-3">SoC Architecture</h3>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> AXI4-Stream & AXI-Lite</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> PS-PL Integration</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> DMA Configuration</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Zynq UltraScale+ MPSoC</li>
+                    </ul>
+                </div>
+
+                <!-- Hardware Optimization -->
+                <div class="glass-card rounded-xl p-6 hover:border-cyan-500/50 transition-all group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-tachometer-alt text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-3">Hardware Optimization</h3>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Quantization (INT8)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Structured Pruning</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Resource Sharing (DSP/BRAM)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Fixed-Point Arithmetic</li>
+                    </ul>
+                </div>
+
+                <!-- Verification -->
+                <div class="glass-card rounded-xl p-6 hover:border-cyan-500/50 transition-all group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bug text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-3">Verification</h3>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> RTL Co-simulation</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> On-chip Profiling</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Loopback Testing</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Signal Integrity Analysis</li>
+                    </ul>
+                </div>
+
+                <!-- Interfaces -->
+                <div class="glass-card rounded-xl p-6 hover:border-cyan-500/50 transition-all group">
+                    <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-plug text-orange-400 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-3">Interfaces</h3>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> HDMI (TMDS/SerDes)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> USB 3.0</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> DDR4 Memory</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> XBee Wireless</li>
+                    </ul>
+                </div>
+
+                <!-- Embedded -->
+                <div class="glass-card rounded-xl p-6 hover:border-cyan-500/50 transition-all group">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-satellite text-red-400 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-3">Space Systems</h3>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> EPS Subsystem Design</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> CubeSat Development</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Antenna Systems (Yagi-Uda)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-500 text-xs"></i> Telemetry & Ground Station</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display text-3xl font-bold text-white mb-12 text-center">Professional Experience</h2>
+            
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-cyan-500 to-blue-600"></div>
+
+                <!-- IIT BHU -->
+                <div class="relative mb-12 md:mb-0">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
+                            <div class="glass-card p-6 rounded-xl border-l-4 border-cyan-500 md:border-l-0 md:border-r-4">
+                                <span class="text-cyan-400 text-sm font-semibold">Aug 2025 - Present</span>
+                                <h3 class="text-xl font-bold text-white mt-2">Research Intern</h3>
+                                <p class="text-slate-400 font-medium">IIT BHU (Banaras Hindu University)</p>
+                                <p class="text-slate-500 text-sm mt-2">Electronics Department, VLSI Research</p>
+                                <div class="mt-3 flex flex-wrap gap-2 justify-end">
+                                    <span class="px-2 py-1 bg-slate-800 rounded text-xs text-cyan-300">DRDO Project</span>
+                                    <span class="px-2 py-1 bg-slate-800 rounded text-xs text-cyan-300">FPGA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-cyan-500 border-4 border-slate-900 items-center justify-center z-10">
+                            <i class="fas fa-university text-white"></i>
+                        </div>
+                        <div class="md:w-5/12 md:pl-8">
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Working on DRDO-sponsored R&D project for <strong class="text-white">Real-Time Aerial Target Classification on FPGA Boards</strong>. Developing optimized neural network accelerators for tactical edge deployment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Garuda Aerospace -->
+                <div class="relative mb-12 md:mb-0 md:mt-12">
+                    <div class="md:flex items-center justify-between flex-row-reverse">
+                        <div class="md:w-5/12 md:text-left mb-4 md:mb-0 md:pl-8">
+                            <div class="glass-card p-6 rounded-xl border-r-4 border-blue-500 md:border-r-0 md:border-l-4">
+                                <span class="text-blue-400 text-sm font-semibold">June 2025 - July 2025</span>
+                                <h3 class="text-xl font-bold text-white mt-2">R&D Intern</h3>
+                                <p class="text-slate-400 font-medium">Garuda Aerospace Pvt. Ltd.</p>
+                                <p class="text-slate-500 text-sm mt-2">Drone Technology & Aerospace</p>
+                                <div class="mt-3 flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-slate-800 rounded text-xs text-blue-300">UAV Systems</span>
+                                    <span class="px-2 py-1 bg-slate-800 rounded text-xs text-blue-300">Embedded</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-blue-500 border-4 border-slate-900 items-center justify-center z-10">
+                            <i class="fas fa-helicopter text-white"></i>
+                        </div>
+                        <div class="md:w-5/12 md:text-right md:pr-8">
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Contributed to drone technology development in R&D department, focusing on embedded systems integration and real-time processing capabilities for UAV applications.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IIST ISRO -->
+                <div class="relative md:mt-12">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right mb-4 md:mb-0 md:pr-8">
+                            <div class="glass-card p-6 rounded-xl border-l-4 border-purple-500 md:border-l-0 md:border-r-4">
+                                <span class="text-purple-400 text-sm font-semibold">May 2024 - July 2024</span>
+                                <h3 class="text-xl font-bold text-white mt-2">Space Systems Intern</h3>
+                                <p class="text-slate-400 font-medium">IIST (ISRO)</p>
+                                <p class="text-slate-500 text-sm mt-2">Small-Spacecraft Systems & Payload Centre</p>
+                                <div class="mt-3 flex flex-wrap gap-2 justify-end">
+                                    <span class="px-2 py-1 bg-slate-800 rounded text-xs text-purple-300">EPS</span>
+                                    <span class="px-2 py-1 bg-slate-800 rounded text-xs text-purple-300">CubeSat</span>
+                                    <span class="px-2 py-1 bg-slate-800 rounded text-xs text-purple-300">SSPACE</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-purple-500 border-4 border-slate-900 items-center justify-center z-10">
+                            <i class="fas fa-rocket text-white"></i>
+                        </div>
+                        <div class="md:w-5/12 md:pl-8">
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Developed <strong class="text-white">EPS (Electrical Power Subsystem)</strong> for CubeSat missions at ISRO's premier space technology institute. Gained hands-on experience in satellite subsystem design and space-grade hardware constraints.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase -->
+    <section id="projects" class="py-20 bg-slate-900/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl font-bold text-white mb-4">Featured Projects</h2>
+                <p class="text-slate-400">Real-world applications in silicon and embedded systems</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- DRDO Project -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-700 transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-br from-cyan-900/50 to-blue-900/50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20">
+                            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMzYjgyZjYiLz48L3N2Zz4=')]"></div>
+                        </div>
+                        <i class="fas fa-drone text-6xl text-cyan-400 relative z-10"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">DRDO Sponsored</span>
+                                <h3 class="text-xl font-bold text-white mt-1">Real-Time Drone Detection on SoC FPGAs</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-xs rounded-full">Ongoing</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4">
+                            High-performance aerial target classification system optimized for edge deployment on Xilinx Zynq UltraScale+ platforms.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-caret-right text-cyan-500 mt-1"></i>
+                                <span>Performed benchmarking against NVIDIA Jetson Nano validating FPGA's superior performance-per-watt</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-caret-right text-cyan-500 mt-1"></i>
+                                <span>Implemented low-latency inference for tactical edge computing scenarios</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Zynq UltraScale+</span>
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">INT8 Quantization</span>
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CANSAT -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-700 transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center">
+                        <i class="fas fa-satellite-dish text-6xl text-purple-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Space Technology</span>
+                                <h3 class="text-xl font-bold text-white mt-1">CANSAT 2024</h3>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Complete communication subsystem for CanSat competition with automated antenna switching.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-caret-right text-purple-500 mt-1"></i>
+                                <span>Engineered wireless telemetry using XBee modules and Raspberry Pi ground station</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-caret-right text-purple-500 mt-1"></i>
+                                <span>SIMO antenna configuration (Yagi-Uda + Patch) with automated signal-switching algorithm</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">RF Communication</span>
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Raspberry Pi</span>
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Antenna Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IR Transceiver -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-700 transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-br from-orange-900/50 to-red-900/50 flex items-center justify-center">
+                        <i class="fas fa-broadcast-tower text-6xl text-orange-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Hardware Design</span>
+                                <h3 class="text-xl font-bold text-white mt-1">Hardware-Level IR Transceiver</h3>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Custom Digital Signal Controller for precision infrared communication with noise mitigation.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-caret-right text-orange-500 mt-1"></i>
+                                <span>ATtiny85-based DSC with high-precision timing for carrier frequency generation</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-caret-right text-orange-500 mt-1"></i>
+                                <span>Custom R-C decoupling filters for TSOP1738 to suppress supply voltage ripples</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-caret-right text-orange-500 mt-1"></i>
+                                <span>PWM encoding scheme optimized for jitter minimization and noise margin maximization</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">ATtiny85</span>
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Signal Processing</span>
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">PCB Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Report Management -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden border border-slate-700 transition-all duration-300">
+                    <div class="h-48 bg-gradient-to-br from-green-900/50 to-emerald-900/50 flex items-center justify-center">
+                        <i class="fas fa-server text-6xl text-green-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-xs font-bold text-green-400 uppercase tracking-wider">Full Stack</span>
+                                <h3 class="text-xl font-bold text-white mt-1">Internship Report Management System</h3>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Web-based platform for managing and storing academic internship records (IIST Project).
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-caret-right text-green-500 mt-1"></i>
+                                <span>Database architecture for document management</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-caret-right text-green-500 mt-1"></i>
+                                <span>Web interface for report submission and retrieval</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Web Development</span>
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Database</span>
+                            <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">WordPress</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="font-display text-4xl font-bold text-white mb-6">Ready to Build the Future?</h2>
+            <p class="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
+                I'm actively seeking opportunities in <strong class="text-cyan-400">VLSI Design</strong>, <strong class="text-cyan-400">Embedded Systems</strong>, and <strong class="text-cyan-400">Hardware Engineering</strong> roles at leading ECE core companies.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <a href="mailto:sparshkeshri2003@gmail.com" class="glass-card p-6 rounded-xl hover:border-cyan-500/50 transition-all group text-center">
+                    <div class="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope text-cyan-400 text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">Email</h3>
+                    <p class="text-sm text-slate-400 break-all">sparshkeshri2003@gmail.com</p>
+                </a>
+                
+                <a href="tel:+919334090574" class="glass-card p-6 rounded-xl hover:border-cyan-500/50 transition-all group text-center">
+                    <div class="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-phone text-cyan-400 text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">Phone</h3>
+                    <p class="text-sm text-slate-400">+91 93340 90574</p>
+                </a>
+                
+                <a href="https://linkedin.com/in/sparsh-keshri-1b30392a7" target="_blank" class="glass-card p-6 rounded-xl hover:border-cyan-500/50 transition-all group text-center">
+                    <div class="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-linkedin text-cyan-400 text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">LinkedIn</h3>
+                    <p class="text-sm text-slate-400">Sparsh Keshri</p>
+                </a>
+            </div>
+
+            <div class="glass-card inline-flex items-center gap-4 px-8 py-4 rounded-full border border-slate-700">
+                <span class="flex h-3 w-3 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-slate-300">Open to relocation • Immediate joiner • Full-time roles</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-8 bg-slate-950">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-slate-500 text-sm">© 2026 Sparsh Keshri. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors"><i class="fab fa-github text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
